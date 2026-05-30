@@ -1,7 +1,4 @@
 # NOTE: This unit test module can only be loaded by the root project module as it needs the TestClass library source code
-cmake_minimum_required(VERSION 4.3)
-project(TestPrivateUnitTestUnits)
-
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
