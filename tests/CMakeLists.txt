@@ -1,9 +1,11 @@
+# NOTE: This unit test module can only be loaded by the root project module as it needs the TestClass library source code
 cmake_minimum_required(VERSION 4.3)
 project(TestPrivateUnitTestUnits)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# START: Default GTest Code
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -14,16 +16,20 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
+# END: Default GTest Code
 
+# Create executable for unit tests
 add_executable(
         TestClass_Test
         testclass/TestClass_Test.cpp
 )
+# Include TestClass library so we can resolve symbols
 target_link_libraries(
         TestClass_Test
         GTest::gtest_main
         TestClass
 )
 
+# More default GTest code
 include(GoogleTest)
 gtest_discover_tests(TestClass_Test)
