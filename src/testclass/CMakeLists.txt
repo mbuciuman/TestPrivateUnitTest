@@ -1,9 +1,10 @@
-# Create the library target
+# Create the library target, make library with all of these source files
 add_library(TestClass TestClass.cpp)
 
-# Tell anyone linking to this library where to find its header files
-target_include_directories(TestClass PUBLIC "${PROJECT_SOURCE_DIR}/include")
+# If linking to this library this is where will find library's header files
+target_include_directories(TestClass PUBLIC "${PROJECT_SOURCE_DIR}/include/testclass")
 
+# Below is to link GoogleTest to the library we just created above
 # START: Default GTest Code - have to include this as we use gtest/gtest_prod.h for FRIEND_TEST
 include(FetchContent)
 FetchContent_Declare(
